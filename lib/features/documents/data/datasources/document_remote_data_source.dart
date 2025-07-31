@@ -15,7 +15,7 @@ class DocumentRemoteDataSourceImpl implements DocumentRemoteDataSource {
   Future<List<DocumentModel>> fetchDocuments() async {
     try {
       final response = await dio.get(
-        'http://127.0.0.1:8000/api/documents/',
+        'http://127.0.0.1:8000//api/documents/',
       ); // adapte l'URL API ici
       if (response.statusCode == 200) {
         final results = response.data['results'] as List;
