@@ -1,21 +1,21 @@
-import 'package:flutter/material.dart';
-
 class Document {
-  final String id;
-  final String title;
-  final String subject;
-  final DateTime date;
-  final String fileType;
+  final int id;
+  final String titre;
+  final String fichierUrl;
+  final Map<String, dynamic> matiere;
+  final String typeFichier;
   final String author;
-  final Color cardColor;
+  final String dateUpload;
+  final int nombreTelechargements;
 
   Document({
     required this.id,
-    required this.title,
-    required this.subject,
-    required this.date,
-    required this.fileType,
+    required this.titre,
+    required this.fichierUrl,
+    required this.matiere,
+    required this.typeFichier,
     this.author = "Anonyme",
-    required this.cardColor,
+    required this.dateUpload,
+    required this.nombreTelechargements,
   });
 }

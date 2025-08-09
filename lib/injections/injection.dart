@@ -1,5 +1,7 @@
 // import 'package:livreprofs/core/network/network._info.dart';
 // import 'package:livreprofs/features/documents/data/repositories/document_repository_impl.dart';
+// import 'package:livreprofs/features/documents/domain/usecases/get_documents.dart';
+// import 'package:livreprofs/features/documents/presentation/bloc/document_bloc.dart';
 
 // final getIt = GetIt.instance;
 

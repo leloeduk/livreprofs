@@ -1,8 +1,7 @@
-// lib/data/repositories/document_repository_impl.dart
-import 'package:livreprofs/features/documents/data/datasources/document_remote_data_source.dart';
+import 'package:livreprofs/features/documents/domain/entities/document.dart';
 
-import '../../domain/entities/document.dart';
 import '../../domain/repositories/document_repository.dart';
+import '../datasources/document_remote_data_source.dart';
 
 class DocumentRepositoryImpl implements DocumentRepository {
   final DocumentRemoteDataSource remoteDataSource;

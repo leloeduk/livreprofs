@@ -1,52 +1,43 @@
 import '../../domain/entities/document.dart';
-import 'package:flutter/material.dart';
 
 class DocumentModel extends Document {
   DocumentModel({
-    required String id,
-    required String title,
-    required String subject,
-    required DateTime date,
-    required String fileType,
-    String author = "Anonyme",
-    required Color cardColor,
-  }) : super(
-         id: id,
-         title: title,
-         subject: subject,
-         date: date,
-         fileType: fileType,
-         author: author,
-         cardColor: cardColor,
-       );
+    required super.id,
+    required super.titre,
+    required super.fichierUrl,
+    required super.matiere,
+    required super.typeFichier,
+    super.author,
+    required super.dateUpload,
+    required super.nombreTelechargements,
+  });
 
+  /// Factory pour convertir un JSON en modèle
   factory DocumentModel.fromJson(Map<String, dynamic> json) {
     return DocumentModel(
-      id: json['id'].toString(),
-      title: json['titre'],
-      subject: json['matiere'],
-      date: DateTime.parse(json['date_upload']),
-      fileType: json['type_fichier'],
-      author: json['auteur'] ?? "Anonyme",
-      cardColor: _colorFromHex(json['couleur'] ?? '#1565C0'),
+      id: json['id'] as int,
+      titre: json['titre'] as String,
+      fichierUrl: json['fichier_url'] as String, // snake_case corrigé
+      matiere: Map<String, dynamic>.from(json['matiere'] ?? {}),
+      typeFichier: json['type_fichier'] as String, // snake_case corrigé
+      author: json['auteur'] ?? "Anonyme", // snake_case corrigé
+      dateUpload: json['date_upload'] as String, // snake_case corrigé
+      nombreTelechargements:
+          json['nombre_telechargements'] as int, // snake_case corrigé
     );
   }
 
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'titre': title,
-    'matiere': subject,
-    'date_upload': date.toIso8601String(),
-    'type_fichier': fileType,
-    'auteur': author,
-    'couleur': '#${cardColor.value.toRadixString(16).substring(2)}',
-  };
-
-  static Color _colorFromHex(String hexColor) {
-    hexColor = hexColor.replaceAll('#', '');
-    if (hexColor.length == 6) {
-      hexColor = 'FF$hexColor'; // ajouter opacité si absente
-    }
-    return Color(int.parse(hexColor, radix: 16));
+  /// Méthode pour convertir le modèle en JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'titre': titre,
+      'fichierUrl': fichierUrl,
+      'matiere': matiere,
+      'typeFichier': typeFichier,
+      'author': author,
+      'dateUpload': dateUpload,
+      'nombreTelechargements': nombreTelechargements,
+    };
   }
 }

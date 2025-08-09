@@ -10,8 +10,7 @@ import 'package:livreprofs/features/documents/presentation/pages/home_page.dart'
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final dio = Dio(); // Tu peux ajouter des options ici si besoin
-
+  final dio = Dio();
   final dataSource = DocumentRemoteDataSourceImpl(dio);
   final repository = DocumentRepositoryImpl(dataSource);
   final getDocuments = GetDocuments(repository);
